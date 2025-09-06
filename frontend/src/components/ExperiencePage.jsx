@@ -6,6 +6,7 @@
 
 
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +26,7 @@ const ExperiencePage = () => {
     const fetchUserData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:9000/api/users/user/${user_id}`,{
+          `${API_URL}/api/users/user/${user_id}`,{
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -120,7 +121,7 @@ const ExperiencePage = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:9000/api/users/experiencepg-homepg",
+        `${API_URL}/api/users/experiencepg-homepg`,
         {
           method: "POST",
           headers: {Authorization: `Bearer ${token}`, "Content-Type": "application/json" },

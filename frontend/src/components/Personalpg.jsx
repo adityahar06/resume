@@ -1,3 +1,4 @@
+const API_URL = import.meta.env.VITE_API_URL;
 
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +61,7 @@ const Personalpg = () => {
     const fetchUserData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:9000/api/users/user/${user_id}`,{
+          `${API_URL}/api/users/user/${user_id}`,{
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -96,7 +97,7 @@ const Personalpg = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:9000/api/users/personalpg-homepg",
+        `${API_URL}/api/users/personalpg-homepg`,
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}`,

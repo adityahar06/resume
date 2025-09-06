@@ -1,5 +1,6 @@
 
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +17,7 @@ const Skillpg = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get(`http://localhost:9000/api/users/user/${user_id}`,{
+        const res = await axios.get(`${API_URL}/api/users/user/${user_id}`,{
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -60,7 +61,7 @@ const Skillpg = () => {
   const projectsbtnhandler = async () => {
     const formdata3 = { email: data.email, password: data.password, skills, languagesSelected };
     try {
-      const response = await fetch('http://localhost:9000/api/users/skillpg-homepg', {
+      const response = await fetch(`${API_URL}/api/users/skillpg-homepg`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json' },
@@ -184,7 +185,7 @@ const Skillpg = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <button
                   className="w-full sm:flex-1 bg-white hover:bg-gray-50 text-gray-700 font-semibold px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-gray-200 hover:border-gray-300 shadow-lg"
-                  onClick={() => navigate("/Educationpg")}
+                  onClick={() => navigate("/Educationpage")}
                 >
                   Back: Education
                 </button>
